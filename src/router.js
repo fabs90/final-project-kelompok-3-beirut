@@ -55,9 +55,19 @@ app.get("/", (req, res) => {
 app.post("/checkout", (req, res) => {
   const { selectedItems = [], isMember, payment } = req.body;
 
+  if (isMember == null || payment == null) {
+    return res.status(400).json({
+      error:
+        "Invalid request body. Please provide valid selectedItems as array, isMember, and payment.",
+    });
+  }
+
   // selectedItems harus array!!!
   if (!Array.isArray(selectedItems)) {
-    return res.status(400).json({ error: "nilai selectedItems harus array" });
+    return res.status(400).json({
+      error:
+        "Invalid request body. Please provide valid selectedItems as array, isMember, and payment.",
+    });
   }
 
   let totalBelanja = calculateTotal(selectedItems);
