@@ -1,6 +1,6 @@
-import js from "@eslint/js";
+const js = require("@eslint/js");
 
-export default [
+module.exports = [
   js.configs.recommended,
 
   {
@@ -10,6 +10,7 @@ export default [
       "no-const-assign": "warn",
       "no-control-regex": "warn",
       "arrow-body-style": "error",
+      "no-undef": "off",
     },
   },
 ];
