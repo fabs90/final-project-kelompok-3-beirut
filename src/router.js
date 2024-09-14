@@ -1,5 +1,5 @@
-import express from "express";
-
+/*eslint no-undef: "off"*/
+const express = require("express");
 const app = express();
 
 app.use(express.json());
@@ -93,4 +93,4 @@ app.post("/checkout", (req, res) => {
   });
 });
 
-export default app;
+module.exports = app;

@@ -1,9 +1,8 @@
 /*eslint no-undef: "off"*/
-import express from "express";
-import http from "node:http";
-
+const express = require("express");
+const http = require("node:http");
+const mainRouter = require("./router.js");
 const app = express();
-import mainRouter from "./router.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
