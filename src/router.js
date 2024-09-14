@@ -20,6 +20,20 @@ const items = [
   { name: "Es Soda Sedih", price: 10000 },
 ];
 
+app.post("/items", (req, res) => {
+  const { name, price } = req.body;
+  if (!name || !price) {
+    res.status(400).json({ message: "Please enter a name and price." });
+  }
+
+  items.push({ name: name, price: price });
+
+  res.status(200).json({
+    message: "Items successfully added",
+    data: items,
+  });
+});
+
 const calculateTotal = (selectedItems) => {
   let total = 0;
   selectedItems.forEach((item) => {
@@ -34,21 +48,7 @@ const calculateTotal = (selectedItems) => {
 app.get("/", (req, res) => {
   res.status(200).json({
     Judul: "LIST MAKANAN KAMI: ",
-    menu: [
-      { name: "Mie Ayam", price: 12000 },
-      { name: "Bakso", price: 15000 },
-      { name: "Ayam Goreng", price: 20000 },
-      { name: "Ayam Bakar", price: 20000 },
-      { name: "Nasi Goreng", price: 15000 },
-      { name: "Mie Goreng", price: 12000 },
-      { name: "Mie Rebus", price: 12000 },
-      { name: "Es Teh", price: 6000 },
-      { name: "Es Jeruk", price: 6000 },
-      { name: "Es Buah", price: 10000 },
-      { name: "Teh Anget", price: 5000 },
-      { name: "Jeruk Anget", price: 5000 },
-      { name: "Es Soda Sedih", price: 10000 },
-    ],
+    menu: items,
   });
 });
 
