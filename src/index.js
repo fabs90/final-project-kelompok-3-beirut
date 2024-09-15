@@ -1,11 +1,15 @@
-var express = require("express");
-var app = express();
+/*eslint no-undef: "off"*/
+const express = require("express");
+const http = require("node:http");
+const mainRouter = require("./router.js");
+const app = express();
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/api", mainRouter);
 
-app.get("/", function (req, res) {
-  res.send("hello world");
-});
+const server = http.createServer(app);
 
-app.listen(3000, () => {
-  console.log(`Server listening at http://localhost:3000`);
+server.listen(3000, "localhost", function () {
+  console.log("Server listening in: http://localhost:3000");
 });

@@ -6,7 +6,11 @@ module.exports = [
   {
     rules: {
       "no-unused-vars": "warn",
-      "no-undef": "warn",
+      "no-compare-neg-zero": "warn",
+      "no-const-assign": "warn",
+      "no-control-regex": "warn",
+      "arrow-body-style": "error",
+      "no-undef": "off",
     },
   },
 ];
