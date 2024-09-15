@@ -1,4 +1,3 @@
-/*eslint no-undef: "off"*/
 const express = require("express");
 const http = require("node:http");
 const mainRouter = require("./router.js");
